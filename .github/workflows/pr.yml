@@ -50,6 +50,7 @@ jobs:
           git checkout ${{ github.event.pull_request.head.ref }}
           echo "updating image tag in values file"
           sed -i "s,tag:.*,tag:\ ${{ github.event.pull_request.head.sha }}," helm/webapp/values.yaml
+          git config --unset-all http.https://github.com/.extraheader
           git add . && git commit -m "update image tag [skip ci]"
           git push
   add_labels:
