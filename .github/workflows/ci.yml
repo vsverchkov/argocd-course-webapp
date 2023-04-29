@@ -54,7 +54,6 @@ jobs:
           git checkout main
           echo "updating image tag in values file"
           sed -i "s,tag:.*,tag:\ ${{ github.sha }}," helm/webapp/values.yaml
-          git config --unset-all http.https://github.com/.extraheader
           git add . && git commit -m "update image tag"
           git push
 
